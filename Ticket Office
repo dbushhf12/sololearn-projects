@@ -1,0 +1,35 @@
+// Ticket Office 
+// Write a program that takes ages of 5 people as input and outputs the total price of the tickets
+// Ticket price is $10
+// Discount is the lowest age of the group (as a percentage) subtracted from total price
+// Example: If the youngest person is 15, $50-15%
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int ages[5];
+    float lowest = 0;  
+    float discount; 
+
+    for (int i = 0; i < 5; i++)
+    {
+        cin >> ages[i];
+
+        for (int j = 0; j < 5; j++)
+        {
+            for (int k = 0; k < 4; k++)
+            {
+                if (ages[k] > ages[j])      
+                    lowest = ages[j];
+                    ages[j] = ages[k];
+                    ages[k] = lowest;
+            }
+        }
+    }
+    discount = 50 - ((lowest/100)*50);
+    cout << discount << endl;
+
+    return 0;
+}
