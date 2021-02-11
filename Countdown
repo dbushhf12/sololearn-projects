@@ -1,0 +1,22 @@
+// Countdown
+// Write a program that counts down from the number taken as input "9 8 7 6 5..." After every multiple of 5, display "beep"
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    cout << "Countdown..." << endl;
+
+    for (int x = n; x >= 1; x--)
+    {
+        cout << x << "..." << endl;
+        if (x % 5 == 0)
+            cout << "beep" << endl;
+        else if (x == 1)
+            cout << "BLAST OFF" << endl;
+    }
+    return 0;
+}
