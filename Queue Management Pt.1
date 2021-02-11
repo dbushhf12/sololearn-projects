@@ -1,0 +1,72 @@
+
+//Queue Management
+//Need to create an add() method for Class Queue
+//add() should take a customer ID number and add it to the end of the Queue
+//Queue contains a size attribute and an array to hold data
+
+#include <iostream>
+using namespace std;
+
+
+class Queue {
+    int size;
+    int* queue;
+
+public:
+    Queue() {
+        size = 0;
+        queue = new int[100];
+    }
+    void remove() {
+        if (size == 0) {
+            cout << "Queue is empty" << endl;
+            return;
+        }
+        else {
+            for (int i = 0; i < size - 1; i++) {
+                queue[i] = queue[i + 1];
+            }
+            size--;
+        }
+    }
+    void print() {
+        if (size == 0) {
+            cout << "Queue is empty" << endl;
+            return;
+        }
+        for (int i = 0; i < size; i++) {
+            cout << queue[i] << " <- ";
+        }
+        cout << endl;
+    }
+    //ADD CODE HERE
+    //Create ADD function for Queue Class
+    void add(int q) {
+        if (size == 101) {
+            cout << "Queue is full" << endl;
+            return;
+        }
+        else {
+            for (int i = 0; i < size + 1; i++) {
+                queue[i + size] = q;
+            }
+            size++;
+        }
+
+    }
+
+};
+
+int main() {
+    Queue q;
+    q.add(42); q.add(2); q.add(8); q.add(1); 
+    q.print();  // should show queue as 42, 2, 8, 1 (customer IDs)
+    q.remove(); // should remove customer 42
+    q.add(128); // should add customer 128 to the end of the queue
+    q.print(); // should show queue as 2, 8, 1, 128
+    q.remove(); // should remove customer 2
+    q.remove(); // should remove customer 8
+    q.print(); // should show queue as 1, 128
+
+    return 0;
+}
