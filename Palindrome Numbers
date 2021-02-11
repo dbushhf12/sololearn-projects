@@ -1,0 +1,48 @@
+// Palindrome Numbers
+// Write a program that returns TRUE if a given number is a palindrome or FALSE if not
+
+#include <iostream>
+using namespace std;
+
+bool isPalindrome(int x)
+{
+    //use % to build reverse of input i.e. chop off the last digit and add it to new number
+
+    int xDigit;     //each digit of x
+    int xReverse = 0;   //will store x in reverse
+    int xNew = x;
+    int test;
+
+    while (xNew != 0)
+    {
+        xDigit = xNew % 10;
+        xReverse = (xReverse*10) + xDigit; //multiply by 10 each time so 1 + 1 becomes 11 and not 2
+        xNew = xNew / 10;
+    }
+    test = x - xReverse;
+
+    if (test == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    if (isPalindrome(n))
+    {
+        cout << n << " is a palindrome";
+    }
+    else
+    {
+        cout << n << " is NOT a palindrome";
+    }
+    return 0;
+}
