@@ -1,0 +1,19 @@
+// Bus Count
+// Write a program that takes the total amount of bus passengers waiting as input and returns the number of empty seats on the last bus as output
+// Bus holds 50 passengers
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+int nPassengers;
+int nMax = 50;
+
+    cout << "How many passengers are waiting?";
+    cin >> nPassengers;
+    int nRemaining = nPassengers % nMax;
+    int nOpen = nMax - nRemaining;
+    cout << "Open seats on the last bus:" << nOpen;
+    return 0;
+}
