@@ -1,0 +1,70 @@
+//Queue Management pt.4
+//Update Queue class to support multiple data types using a class template
+#include <iostream>
+using namespace std;
+
+template <class T>
+class Queue {
+public:
+    int size;
+    T* queue;
+
+public:
+    Queue() {
+        size = 0;
+        queue = new T[100];
+    }
+public:
+    void add(T data) {
+        queue[size] = data;
+        size++;
+    }
+public:
+    void remove() {
+        if (size == 0) {
+            cout << "Queue is empty" << endl;
+            return;
+        }
+        else {
+            for (int i = 0; i < size - 1; i++) {
+                queue[i] = queue[i + 1];
+            }
+            size--;
+        }
+    }
+public:
+    void print() {
+        if (size == 0) {
+            cout << "Queue is empty" << endl;
+            return;
+        }
+        for (int i = 0; i < size; i++) {
+            cout << queue[i] << " <- ";
+        }
+        cout << endl;
+    }
+    Queue operator+(Queue& q) {
+        Queue newQ;
+        for (int i = 0; i < this->size; i++) {
+            newQ.add(this->queue[i]);
+        }
+        for (int i = 0; i < q.size; i++) {
+            newQ.add(q.queue[i]);
+        }
+        return newQ;
+
+    }
+};
+
+int main() {
+    Queue <int> q1;
+    q1.add(42); q1.add(2); q1.add(8);  q1.add(1);
+    q1.print();
+
+    Queue <string> q2;
+    q2.add("Dave"); q2.add("John"); q2.add("Amy");  
+    q2.print();
+
+
+    return 0;
+}
